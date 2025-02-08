@@ -2,7 +2,6 @@
 session_start();
 require_once __DIR__ . '../app/functions.php';
 
-// Processa requisições POST
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (isset($_POST['content'])) {
         insertEntry($pdo, $_POST['content']);
@@ -14,7 +13,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 }
 
-// Recupera entradas
 $entries = getEntries($pdo);
 ?>
 
@@ -41,10 +39,10 @@ $entries = getEntries($pdo);
 <body class="bg-gray-100 dark:bg-gray-900 p-6">
     <div class="max-w-xl mx-auto bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md">
         <div class="flex justify-between items-center">
-        <h1 class="text-2xl font-bold dark:text-white">Meu Diário</h1>
+        <h1 class="text-2xl font-bold dark:text-white">Diário</h1>
         <button id="toggleTheme" class="bg-gray-300 dark:bg-gray-700 text-gray-800 dark:text-white px-4 py-2 rounded-md">🌙</button>
     </div>
-        <textarea id="entry" class="w-full border p-2 rounded-md dark:bg-gray-700 dark:text-white" placeholder="Escreva algo..."></textarea>
+        <textarea id="entry" class="w-full border p-4 rounded-md dark:bg-gray-700 dark:text-white mt-5" placeholder="Escreva algo..."></textarea>
         <button id="save" class="mt-2 bg-blue-500 text-white px-4 py-2 rounded-md">Salvar</button>
         <ul id="entries" class="mt-4 space-y-2">
             <?php foreach ($entries as $entry): ?>
